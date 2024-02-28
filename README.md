@@ -1,6 +1,6 @@
 # SpaceInvadersProg3
 
-
+![Alt text](image.png)
 
 ## Getting started
 

@@ -1,0 +1,73 @@
+﻿<Page x:Class="SpaceInvaderMVVM.Presentation.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:SpaceInvaderMVVM.Presentation"
+      xmlns:uen="using:Uno.Extensions.Navigation.UI"
+      xmlns:utu="using:Uno.Toolkit.UI"
+      xmlns:um="using:Uno.Material"
+      NavigationCacheMode="Required"
+      Background="{ThemeResource BackgroundBrush}">
+
+  <Grid>
+    <StackPanel
+    Orientation="Vertical"
+    VerticalAlignment="Center"
+      HorizontalAlignment="Center"
+      >
+
+      <Grid>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel
+      Orientation="Horizontal"
+      HorizontalAlignment="Left"
+        VerticalAlignment="center"
+        
+        >
+          <TextBlock Text="Score: " FontSize="24" />
+          <TextBlock Text="{Binding ScoreHandler.Score}" FontSize="24" />
+        </StackPanel>
+        <StackPanel  Grid.Column="2">
+          <ItemsControl
+            ItemsSource="{Binding LifesHandler.Lifes}"
+            >
+            <ItemsControl.ItemsPanel>
+              <ItemsPanelTemplate>
+                <StackPanel Orientation="Horizontal" />
+              </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+              <DataTemplate>
+                <Image
+                  Source="ms-appx:///SpaceInvaderMVVM/Assets/ship.png"
+                  Width="36"
+                  Height="36"
+                />
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+        </StackPanel>
+      </Grid>
+      <Canvas
+        x:Name="canvasGame"
+        Width="{Binding Width}"
+        Height="{Binding Height}"
+        Background="Black"
+        IsTabStop="True"
+      >
+        <Image
+          Source="{Binding Ship.ImagePath}"
+          Width="{Binding Ship.Width}"
+          Height="{Binding Ship.Height}"
+          Canvas.Left="{Binding Ship.X}"
+          Canvas.Top="{Binding Ship.Y}" 
+        />
+      </Canvas>
+
+    </StackPanel>
+  </Grid>
+</Page>
